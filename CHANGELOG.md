@@ -7,14 +7,6 @@
 ## [v0.3.0](https://github.com/spinels/rack-ssl-enforcer/tree/v0.3.0) (2022-01-09)
 [Full Changelog](https://github.com/spinels/rack-ssl-enforcer/compare/v0.2.9...v0.3.0)
 
-**Closed issues:**
-
-- HSTS Implementation [\#92](https://github.com/tobmatth/rack-ssl-enforcer/issues/92)
-- Does not set session cookie as secure [\#91](https://github.com/tobmatth/rack-ssl-enforcer/issues/91)
-- HSTS and secure cookies w/o redirect? [\#89](https://github.com/tobmatth/rack-ssl-enforcer/issues/89)
-- ERR\_CONNECTION\_REFUSED [\#85](https://github.com/tobmatth/rack-ssl-enforcer/issues/85)
-- Issue with IE only... strict true not working [\#80](https://github.com/tobmatth/rack-ssl-enforcer/issues/80)
-
 **Merged pull requests:**
 
 - Make middleware thread-safe [\#105](https://github.com/tobmatth/rack-ssl-enforcer/pull/105) ([titanous](https://github.com/titanous))
