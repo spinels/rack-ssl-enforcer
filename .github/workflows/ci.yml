@@ -15,12 +15,33 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Ruby ${{ matrix.ruby }}
+
+    - name: Install Ruby 1.9
+      if: matrix.ruby == '1.9'
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+
+    # Ruby 1.9 comes with RubyGems 1.8.23.2 but arbitrary metadata support in
+    # gemspec was added in RubyGems 2.0.0.
+    # RubyGems 2.7.11 is the last version to support Ruby 1.9.
+    - name: Update RubyGems for Ruby 1.9
+      if: matrix.ruby == '1.9'
+      run: gem update --system 2.7.11
+
+    - name: Install dependencies for Ruby 1.9
+      if: matrix.ruby == '1.9'
+      run: bundle install
+
+    - name: Install Ruby ${{ matrix.ruby }}, install and cache dependencies
+      if: matrix.ruby != '1.9'
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-    - run: bundle exec rake
+
+    - name: Run tests
+      run: bundle exec rake
 
   install:
     runs-on: ubuntu-latest
