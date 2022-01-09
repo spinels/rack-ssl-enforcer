@@ -61,7 +61,6 @@ class TestRackSslEnforcer < Test::Unit::TestCase
   context 'With Rails 2.3 / Rack 1.1-style Array-based cookies' do
     setup do
       main_app = lambda { |env|
-        request = Rack::Request.new(env)
         headers = {'Content-Type' => "text/html"}
         headers['Set-Cookie'] = ["id=1; path=/", "token=abc; path=/; HttpOnly"]
         [200, headers, ['Hello world!']]
@@ -407,7 +406,7 @@ class TestRackSslEnforcer < Test::Unit::TestCase
   end
 
   context ':only_hosts (Regex)' do
-    setup { mock_app :only_hosts => /[www|api]\.example\.co\.uk$/ }
+    setup { mock_app :only_hosts => /www|api\.example\.co\.uk$/ }
 
     should 'redirect to HTTPS for www.example.co.uk' do
       get 'http://www.example.co.uk'
@@ -457,7 +456,7 @@ class TestRackSslEnforcer < Test::Unit::TestCase
   end
 
   context ':only_hosts (Array)' do
-    setup { mock_app :only_hosts => [/[www|api]\.example\.org$/, "example.com"] }
+    setup { mock_app :only_hosts => [/www|api\.example\.org$/, "example.com"] }
 
     should 'redirect to HTTPS for www.example.org' do
       get 'http://www.example.org'
@@ -491,7 +490,7 @@ class TestRackSslEnforcer < Test::Unit::TestCase
   end
 
   context ':except_hosts (Regex)' do
-    setup { mock_app :except_hosts => /[www|api]\.example\.co\.uk$/ }
+    setup { mock_app :except_hosts => /www|api\.example\.co\.uk$/ }
 
     should 'redirect to HTTPS for goo.example.co.uk' do
       get 'http://goo.example.co.uk'
@@ -693,7 +692,7 @@ class TestRackSslEnforcer < Test::Unit::TestCase
   end
 
   context ':except_hosts & :hsts == true & :strict == true' do
-    setup { mock_app :except_hosts => /[www|api]\.example\.org$/, :hsts => true, :strict => true }
+    setup { mock_app :except_hosts => /www|api\.example\.org$/, :hsts => true, :strict => true }
 
     should 'redirect to HTTP for www.example.org' do
       get 'https://www.example.org/'

@@ -1,4 +1,3 @@
-require 'rubygems'
 require 'test/unit'
 require 'shoulda'
 require 'rack/mock'
@@ -15,7 +14,6 @@ class Test::Unit::TestCase
 
   def mock_app(options_or_options_array = {})
     main_app = lambda { |env|
-      request = Rack::Request.new(env)
       headers = {'Content-Type' => "text/html"}
       headers['Set-Cookie'] = "id=1; path=/\ntoken=abc; path=/; secure; HttpOnly"
       [200, headers, ['Hello world!']]
