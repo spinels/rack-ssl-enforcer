@@ -61,7 +61,6 @@ class TestRackSslEnforcer < Test::Unit::TestCase
   context 'With Rails 2.3 / Rack 1.1-style Array-based cookies' do
     setup do
       main_app = lambda { |env|
-        request = Rack::Request.new(env)
         headers = {'Content-Type' => "text/html"}
         headers['Set-Cookie'] = ["id=1; path=/", "token=abc; path=/; HttpOnly"]
         [200, headers, ['Hello world!']]
