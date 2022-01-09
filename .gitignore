@@ -19,6 +19,7 @@ rdoc
 pkg
 .bundle
 Gemfile.lock
+*.gem
 
 ## PROJECT::SPECIFIC
 .ruby-gemset

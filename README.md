@@ -1,18 +1,26 @@
-# Rack::SslEnforcer [![Build Status](https://travis-ci.org/tobmatth/rack-ssl-enforcer.svg?branch=master)](https://travis-ci.org/tobmatth/rack-ssl-enforcer)
+**`spinels/rack-ssl-enforcer`** is a fork of [`tobmatth/rack-ssl-enforcer`][tobmatth/rack-ssl-enforcer] with the following patches applied:
 
-Rack::SslEnforcer is a simple Rack middleware to enforce SSL connections. As of Version 0.2.0, Rack::SslEnforcer marks
+- https://github.com/tobmatth/rack-ssl-enforcer/pull/105
+
+It has been republished to RubyGems under the name [`spinels-rack-ssl-enforcer`](https://rubygems.org/gems/spinels-rack-ssl-enforcer).
+
+[tobmatth/rack-ssl-enforcer]: https://github.com/tobmatth/rack-ssl-enforcer
+
+---
+
+# Rack::SslEnforcer [![CI](https://github.com/spinels/rack-ssl-enforcer/actions/workflows/ci.yml/badge.svg)](https://github.com/spinels/rack-ssl-enforcer/actions/workflows/ci.yml)
+
+Rack::SslEnforcer is a simple Rack middleware to enforce TLS/SSL connections. As of Version 0.2.0, Rack::SslEnforcer marks
 Cookies as secure by default (HSTS must be set manually).
-
-Tested against Ruby 1.8.7, 1.9.2, 1.9.3, 2.0.0, 2.1.10, 2.2.7, 2.3.4, 2.4.1, ruby-head, REE and the latest versions of Rubinius & JRuby.
 
 ## Installation
 
-The simplest way to install Rack::SslEnforcer is to use [Bundler](http://gembundler.com).
+The simplest way to install Rack::SslEnforcer is to use [Bundler](https://bundler.io/).
 
 Add Rack::SslEnforcer to your `Gemfile`:
 
 ```ruby
- gem 'rack-ssl-enforcer'
+ gem 'spinels-rack-ssl-enforcer'
 ```
 
 ### Installing on Sinatra / Padrino application
@@ -312,11 +320,12 @@ This makes sure that Rack::SslEnforcer knows it's being accessed over SSL. Just 
 
 #### Contributors
 
-[https://github.com/tobmatth/rack-ssl-enforcer/graphs/contributors](https://github.com/tobmatth/rack-ssl-enforcer/graphs/contributors)
+- [https://github.com/tobmatth/rack-ssl-enforcer/graphs/contributors](https://github.com/tobmatth/rack-ssl-enforcer/graphs/contributors)
+- [https://github.com/spinels/rack-ssl-enforcer/graphs/contributors](https://github.com/spinels/rack-ssl-enforcer/graphs/contributors)
 
 ## Credits
 
-Flagging cookies as secure functionality and HSTS support is greatly inspired by [Joshua Peek's Rack::SSL](https://github.com/josh/rack-ssl).
+Flagging cookies as secure functionality and HSTS support is greatly inspired by [Joshua Peek's Rack::SSL](https://rubygems.org/gems/rack-ssl).
 
 ## Note on Patches / Pull Requests
 
