@@ -68,9 +68,9 @@ You can enforce SSL connections only for certain hosts with `:only_hosts`, or pr
 config.middleware.use Rack::SslEnforcer, :only_hosts => 'api.example.com'
 # Please note that, for instance, both http://help.example.com/demo and https://help.example.com/demo would be accessible here
 
-config.middleware.use Rack::SslEnforcer, :except_hosts => /[help|blog]\.example\.com$/
+config.middleware.use Rack::SslEnforcer, :except_hosts => /(help|blog)\.example\.com$/
 
-config.middleware.use Rack::SslEnforcer, :only_hosts => [/[secure|admin]\.example\.org$/, 'api.example.com']
+config.middleware.use Rack::SslEnforcer, :only_hosts => [/(help|blog)\.example\.org$/, 'api.example.com']
 ```
 
 ### Path constraints
@@ -132,7 +132,7 @@ User agent constraints may be a `String`, a `Regex` or an array of `String` or `
 ```ruby
 config.middleware.use Rack::SslEnforcer, :except_agents => 'Googlebot'
 
-config.middleware.use Rack::SslEnforcer, :except_agents => /[Googlebot|bingbot]/
+config.middleware.use Rack::SslEnforcer, :except_agents => /Googlebot|bingbot/
 
 config.middleware.use Rack::SslEnforcer, :only_agents => ['test-secu-bot', /custom-crawler[0-9a-f]/]
 ```
