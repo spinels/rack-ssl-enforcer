@@ -2,7 +2,7 @@
 
 ## [Unreleased](https://github.com/spinels/rack-ssl-enforcer/tree/HEAD)
 
-[Full Changelog](https://github.com/spinels/rack-ssl-enforcer/compare/v0.2.9...HEAD)
+[Full Changelog](https://github.com/spinels/rack-ssl-enforcer/compare/v0.3.0...HEAD)
 
 ## [v0.3.0](https://github.com/spinels/rack-ssl-enforcer/tree/v0.3.0) (2022-01-09)
 [Full Changelog](https://github.com/spinels/rack-ssl-enforcer/compare/v0.2.9...v0.3.0)
