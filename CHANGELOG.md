@@ -2,7 +2,12 @@
 
 ## [Unreleased](https://github.com/spinels/rack-ssl-enforcer/tree/HEAD)
 
-[Full Changelog](https://github.com/spinels/rack-ssl-enforcer/compare/v0.3.0...HEAD)
+[Full Changelog](https://github.com/spinels/rack-ssl-enforcer/compare/v1.0.0...HEAD)
+
+## [v1.0.0](https://github.com/spinels/rack-ssl-enforcer/tree/v1.0.0) (2024-08-01)
+[Full Changelog](https://github.com/spinels/rack-ssl-enforcer/compare/v0.3.0...v1.0.0)
+
+- Rack 3.0+ compatibility [#7](https://github.com/spinels/rack-ssl-enforcer/pull/7) ([dentarg](https://github.com/dentarg))
 
 ## [v0.3.0](https://github.com/spinels/rack-ssl-enforcer/tree/v0.3.0) (2022-01-09)
 [Full Changelog](https://github.com/spinels/rack-ssl-enforcer/compare/v0.2.9...v0.3.0)
