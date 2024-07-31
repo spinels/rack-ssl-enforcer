@@ -1,5 +1,6 @@
 require 'test/unit'
 require 'shoulda'
+require 'rack/builder'
 require 'rack/mock'
 require 'rack/test'
 
