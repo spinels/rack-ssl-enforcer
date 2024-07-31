@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    name: ruby ${{ matrix.ruby }}, rack ${{ matrix.rack }})
     strategy:
       fail-fast: false
       matrix:
