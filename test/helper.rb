@@ -16,8 +16,8 @@ class Test::Unit::TestCase
 
   def mock_app(options_or_options_array = {})
     main_app = lambda { |env|
-      headers = {'Content-Type' => "text/html"}
-      headers['Set-Cookie'] = "id=1; path=/\ntoken=abc; path=/; secure; HttpOnly"
+      headers = {'content-type' => "text/html"}
+      headers['set-cookie'] = ["id=1; path=/", "token=abc; path=/; secure; HttpOnly"]
       [200, headers, ['Hello world!']]
     }
 
