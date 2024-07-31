@@ -17,8 +17,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install Ruby 1.9 or 2.2
-      if: matrix.ruby == '1.9' || matrix.ruby == '2.2'
+    - name: Install Ruby 1.9
+      if: matrix.ruby == '1.9'
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
@@ -30,12 +30,12 @@ jobs:
       if: matrix.ruby == '1.9'
       run: gem update --system 2.7.11
 
-    - name: Install dependencies for Ruby 1.9, 2.2
-      if: matrix.ruby == '1.9' || matrix.ruby == '2.2'
+    - name: Install dependencies for Ruby 1.9
+      if: matrix.ruby == '1.9'
       run: bundle install
 
     - name: Install Ruby ${{ matrix.ruby }}, install and cache dependencies
-      if: matrix.ruby != '1.9' && matrix.ruby != '2.2'
+      if: matrix.ruby != '1.9'
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
