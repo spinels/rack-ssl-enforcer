@@ -22,9 +22,10 @@ jobs:
           - jruby
           - truffleruby
         rack:
-          - ~> 3.0.0
-          - stable
-          - head
+          - ~>3.1.0
+        include:
+          - { ruby: 3.1, rack: ~>3.0.0 }
+          - { ruby: 3.3, rack: head }
     runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
