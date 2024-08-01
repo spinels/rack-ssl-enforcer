@@ -13,8 +13,10 @@ Gem::Specification.new do |s|
   s.summary     = 'A simple Rack middleware to enforce SSL'
   s.description = 'Rack::SslEnforcer is a simple Rack middleware to enforce ssl connections'
 
+  s.add_dependency 'rack', '>= 3.0.0'
+
   s.required_rubygems_version = '>= 1.3.6'
-  s.required_ruby_version     = '>= 1.9.3'
+  s.required_ruby_version     = '>= 3.1.0'
 
   s.metadata     = { 'rubygems_mfa_required' => 'true' }
   s.files        = Dir.glob('{lib}/**/*') + %w[LICENSE README.md]

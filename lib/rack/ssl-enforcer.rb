@@ -93,7 +93,7 @@ module Rack
       location = replace_host(location, req, @options[:redirect_to])
       redirect_to(location)
     rescue URI::InvalidURIError
-      [400, { 'Content-Type' => 'text/plain'}, []]
+      [400, { 'content-type' => 'text/plain'}, []]
     end
 
     def redirect_to(location)
@@ -102,7 +102,7 @@ module Rack
       body << @options[:redirect_html] if @options[:redirect_html].is_a?(String)
       body = @options[:redirect_html] if @options[:redirect_html].respond_to?('each')
 
-      [@options[:redirect_code] || 301, { 'Content-Type' => 'text/html', 'Location' => location }, body]
+      [@options[:redirect_code] || 301, { 'content-type' => 'text/html', 'location' => location }, body]
     end
 
     def ssl_request?(req)
@@ -181,15 +181,15 @@ module Rack
 
     # see http://en.wikipedia.org/wiki/HTTP_cookie#Cookie_theft_and_session_hijacking
     def flag_cookies_as_secure!(headers)
-      if cookies = headers['Set-Cookie']
+      if cookies = headers['set-cookie']
         # Support Rails 2.3 / Rack 1.1 arrays as headers
         unless cookies.is_a?(Array)
           cookies = cookies.split("\n")
         end
 
-        headers['Set-Cookie'] = cookies.map do |cookie|
+        headers['set-cookie'] = cookies.map do |cookie|
           cookie !~ /(^|;\s)secure($|;)/ ? "#{cookie}; secure" : cookie
-        end.join("\n")
+        end
       end
     end
 
@@ -200,7 +200,7 @@ module Rack
       value  = "max-age=#{opts[:expires]}"
       value += "; includeSubDomains" if opts[:subdomains]
       value += "; preload" if opts[:preload]
-      headers.merge!({ 'Strict-Transport-Security' => value })
+      headers.merge!({ 'strict-transport-security' => value })
     end
 
   end

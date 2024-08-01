@@ -44,25 +44,25 @@ class TestRackSslEnforcer < Test::Unit::TestCase
 
     should 'secure cookies' do
       get 'https://www.example.org/'
-      assert_equal ["id=1; path=/; secure", "token=abc; path=/; secure; HttpOnly"], last_response.headers['Set-Cookie'].split("\n")
+      assert_equal ["id=1; path=/; secure", "token=abc; path=/; secure; HttpOnly"], last_response.headers['set-cookie']
     end
 
     should 'not set default HSTS headers to SSL requests' do
       get 'https://www.example.org/'
-      assert !last_response.headers["Strict-Transport-Security"]
+      assert !last_response.headers["strict-transport-security"]
     end
 
     should 'not set hsts headers to non-SSL requests' do
       get 'http://www.example.org/'
-      assert !last_response.headers["Strict-Transport-Security"]
+      assert !last_response.headers["strict-transport-security"]
     end
   end
 
   context 'With Rails 2.3 / Rack 1.1-style Array-based cookies' do
     setup do
       main_app = lambda { |env|
-        headers = {'Content-Type' => "text/html"}
-        headers['Set-Cookie'] = ["id=1; path=/", "token=abc; path=/; HttpOnly"]
+        headers = {'content-type' => "text/html"}
+        headers['set-cookie'] = ["id=1; path=/", "token=abc; path=/; HttpOnly"]
         [200, headers, ['Hello world!']]
       }
 
@@ -74,7 +74,7 @@ class TestRackSslEnforcer < Test::Unit::TestCase
 
     should 'secure cookies' do
       get 'https://www.example.org/'
-      assert_equal ["id=1; path=/; secure", "token=abc; path=/; HttpOnly; secure"], last_response.headers['Set-Cookie'].split("\n")
+      assert_equal ["id=1; path=/; secure", "token=abc; path=/; HttpOnly; secure"], last_response.headers['set-cookie']
     end
   end
 
@@ -708,22 +708,22 @@ class TestRackSslEnforcer < Test::Unit::TestCase
 
     should 'not set hsts for www.example.org (HTTP)' do
       get 'http://www.example.org/'
-      assert !last_response.headers["Strict-Transport-Security"]
+      assert !last_response.headers["strict-transport-security"]
     end
 
     should 'not set hsts for www.example.org (HTTPS)' do
       get 'https://www.example.org/'
-      assert !last_response.headers["Strict-Transport-Security"]
+      assert !last_response.headers["strict-transport-security"]
     end
 
     should 'not set hsts for abc.example.org (HTTP)' do
       get 'http://abc.example.org/'
-      assert !last_response.headers["Strict-Transport-Security"]
+      assert !last_response.headers["strict-transport-security"]
     end
 
     should 'not set hsts for abc.example.org (HTTPS)' do
       get 'https://abc.example.org/'
-      assert !last_response.headers["Strict-Transport-Security"]
+      assert !last_response.headers["strict-transport-security"]
     end
   end
 
@@ -792,17 +792,17 @@ class TestRackSslEnforcer < Test::Unit::TestCase
 
     should 'set expiry option' do
       get 'https://www.example.org/'
-      assert last_response.headers["Strict-Transport-Security"].include?("max-age=500")
+      assert last_response.headers["strict-transport-security"].include?("max-age=500")
     end
 
     should 'not include subdomains' do
       get 'https://www.example.org/'
-      assert !last_response.headers["Strict-Transport-Security"].include?("includeSubDomains")
+      assert !last_response.headers["strict-transport-security"].include?("includeSubDomains")
     end
 
     should 'set preload option' do
       get 'https://www.example.org'
-      assert last_response.headers["Strict-Transport-Security"].include?("preload")
+      assert last_response.headers["strict-transport-security"].include?("preload")
     end
   end
 
@@ -811,7 +811,7 @@ class TestRackSslEnforcer < Test::Unit::TestCase
 
     should 'not secure cookies but warn the user of the consequences' do
       get 'https://www.example.org/users/123/edit'
-      assert_equal ["id=1; path=/", "token=abc; path=/; secure; HttpOnly"], last_response.headers['Set-Cookie'].split("\n")
+      assert_equal ["id=1; path=/", "token=abc; path=/; secure; HttpOnly"], last_response.headers['set-cookie']
     end
   end
 
