@@ -9,11 +9,10 @@ on:
 jobs:
   test:
     name: ruby ${{ matrix.ruby }}, rack ${{ matrix.rack }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        os:
-          - ubuntu-latest
         ruby:
           - 3.1
           - 3.2
@@ -24,9 +23,8 @@ jobs:
         rack:
           - ~>3.1.0
         include:
-          - { ruby: 3.1, rack: "~>3.0.0" }
+          - { ruby: 3.1, rack: ~>3.0.0 }
           - { ruby: 3.3, rack: head }
-    runs-on: ${{ matrix.os }}
     steps:
     - uses: actions/checkout@v4
 
